@@ -1,0 +1,22 @@
+# Use uma imagem Node.js base
+FROM node:12
+
+# Crie um diretório de trabalho
+WORKDIR /usr/src/app
+
+# Copie o arquivo package.json e package-lock.json
+COPY package*.json ./
+
+# Instale todas as dependências
+RUN npm install
+RUN npm install cors
+RUN npm install express
+
+# Copie o restante dos arquivos do projeto
+COPY . .
+
+# Exponha a porta que a aplicação vai rodar
+EXPOSE 8000
+
+# Comando para iniciar a aplicação
+CMD [ "node", "server.js" ]
