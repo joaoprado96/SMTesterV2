@@ -84,72 +84,71 @@ function App() {
     }
 
     setDropdownValues(Array.from({ length: 9 }, () => ''));
-    setSliderValues(Array.from({ length: 5 }, () => 0));
+    setSliderValues(Array.from({ length: 3 }, () => 0));
     setTextInput('');
   };
 
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6">
-          <h1>Service Master Tester</h1>
-          <form onSubmit={handleSubmit}>
-          <button type="submit">Enviar</button>
-            {dropdownOptions.map((option, index) => (
-              <div key={index}>
-                <label htmlFor={`dropdown-${index}`}>{option.label}</label>
-                <select
-                  id={`dropdown-${index}`}
-                  className="form-control"
-                  value={dropdownValues[index]}
-                  onChange={e => handleDropdownChange(index, e.target.value)}
-                >
-                  <option value="">Selecione...</option>
-                  {option.options.map((subOption, subIndex) => (
-                    <option key={subIndex} value={subOption}>
-                      {subOption}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            ))}
-           <div className="form-group">
-            <label htmlFor="textInput">Entrada de Texto:</label>
-            <input
-              type="text"
-              id="textInput"
-              className="form-control"
-              value={textInput}
-              onChange={handleTextInputChange}
-            />
-           </div>
-            <div>
-              <h2>Barras deslizantes</h2>
-              {Array.from({ length: 5 }, (_, i) => (
-                <div key={i}>
-                  <label htmlFor={`slider-${i}`}>Opção {i + 1}</label>
-                  <input
-                    type="range"
-                    id={`slider-${i}`}
-                    min="0"
-                    max="100"
-                    value={sliderValues[i]}
-                    onChange={e => handleSliderChange(i, parseInt(e.target.value))}
-                  />
-                  <span>{sliderValues[i]}</span>
-                </div>
-              ))}
-            </div>
-          </form>
-        </div>
-        <div className="col-md-6">
-          <h1>Mensagens do Backend</h1>
-          <div className="message-box">
-            {messages.map((message, index) => (
-              <p key={index}>{message}</p>
-            ))}
-          </div>
-        </div>
+                  <div className="col-md-3">
+                              <h1>SM Tester</h1>
+                              <form onSubmit={handleSubmit}>
+                              <button type="submit">Enviar</button>
+                                {dropdownOptions.map((option, index) => (
+                                  <div key={index}>
+                                    <label htmlFor={`dropdown-${index}`}>{option.label}</label>
+                                              <select
+                                                id={`dropdown-${index}`}
+                                                className="form-control"
+                                                value={dropdownValues[index]}
+                                                onChange={e => handleDropdownChange(index, e.target.value)}>
+                                                <option value="">Selecione...</option>
+                                                      {option.options.map((subOption, subIndex) => (
+                                                        <option key={subIndex} value={subOption}>
+                                                          {subOption}
+                                                        </option>
+                                                      ))}
+                                              </select>
+                                  </div>
+                                ))}
+                              <div className="form-group">
+                                <label htmlFor="textInput">Entrada de Texto:</label>
+                                <input
+                                  type="text"
+                                  id="textInput"
+                                  className="form-control"
+                                  value={textInput}
+                                  onChange={handleTextInputChange}
+                                />
+                              </div>
+                                <div>
+                                  <h2>Barras deslizantes</h2>
+                                  {Array.from({ length: 3 }, (_, i) => (
+                                    <div key={i}>
+                                      <label htmlFor={`slider-${i}`}>Opção {i + 1}</label>
+                                      <input
+                                        type="range"
+                                        id={`slider-${i}`}
+                                        min="0"
+                                        max="100"
+                                        value={sliderValues[i]}
+                                        onChange={e => handleSliderChange(i, parseInt(e.target.value))}
+                                      />
+                                      <span>{sliderValues[i]}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </form>
+                  </div>
+                  <div className="col-md-7">
+                    <h1>Mensagens do Backend</h1>
+                    <div className="message-box">
+                      {messages.map((message, index) => (
+                        <p key={index}>{message}</p>
+                      ))}
+                    </div>
+                  </div>
       </div>
     </div>
   );  
